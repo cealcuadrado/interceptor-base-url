@@ -1,3 +1,4 @@
+import { HttpsInterceptor } from './interceptors/https.interceptor';
 import { BaseUrlInterceptor } from './interceptors/base-url.interceptor';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -15,6 +16,11 @@ import { ErrorHandleInterceptor } from './interceptors/error-handle.interceptor'
     {
       provide: HTTP_INTERCEPTORS,
       useClass: BaseUrlInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpsInterceptor,
       multi: true
     },
     {
