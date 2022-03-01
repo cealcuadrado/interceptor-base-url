@@ -1,3 +1,4 @@
+import { RegisterService } from './../services/register.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LayoutComponent implements OnInit {
 
-  constructor() { }
+  data = '';
+
+  constructor(
+    private register: RegisterService
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  getData(): void {
+    this.register.getPhotos().subscribe(photos => {
+      this.data = JSON.stringify(photos); 
+    });
   }
 
 }
